@@ -1,5 +1,5 @@
-# Project Name
-> Here goes your awesome project description!
+# Let's go Ride
+> Applikacja pozwala na dodawanie i wyznaczanie tras. Korzysta z google directions api i google maps api!
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -35,4 +35,4 @@ Project is: _in progress_, _finished_, _no longer continue_ and why?
 ## Inspiration
 Add here credits. Project inspired by..., based on...
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by Natalia Gościnna & Damian Jaszewski - feel free to contact with us!
