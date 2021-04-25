@@ -55,10 +55,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
-    private GeoApiContext mGeoApiContext = null;
-    private static final String TAG = "UserListFragment";
 
-    //Pobieranie danych trasy
+    //Przekazanie danych z Jsona do stringa
     public class DownloadTask extends AsyncTask<String, Void, String>{
 
         @Override
@@ -89,10 +87,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return json;
         }
 
+        //Wyciągniecie danych z Jsona odnośnie samej trasy
         @Override
         protected void onPostExecute(String json) {
             super.onPostExecute(json);
-//            Log.i("Trasa",json);
 
             try {
                 //przekształcanie na tekst z jsona
@@ -125,6 +123,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    //Metoda zezwalająca na dostęp do usług lokalizacyjnych
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -141,8 +140,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        //Pobieranie danych o trasie z direction API
         DownloadTask task = new DownloadTask();
-//        task.execute("http://api.openweathermap.org/data/2.5/weather?q=gdansk&appid=2023ca940ee6a71d8121ed4fccd48abd");
         task.execute("https://maps.googleapis.com/maps/api/directions/json?" +
                 "origin=Chylonia, Gdynia&" +
                 "destination=Rezerwat przyrody Cisowa, Gdynia&" +
@@ -159,8 +158,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Add map type (terrain, satellite)
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        //Ustawienie typu mapy np. teren, satelita (terrain, satellite)
+        //mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -168,8 +167,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onLocationChanged(@NonNull Location location) {
                 // Toast.makeText(MapsActivity.this, location.toString(), Toast.LENGTH_LONG).show();
                 // Add a marker in myLocation and move the camera
-                mMap.clear();
+                //mMap.clear();
 
+                //Metoda ustawia marker na naszej lokalizacji
                 LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.addMarker(
                         new MarkerOptions()
@@ -179,6 +179,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
                 );
 
+                //Metoda rysuje trasę(linie)
                 mMap.addPolyline(new PolylineOptions()
                         .clickable(true)
                         .add(
