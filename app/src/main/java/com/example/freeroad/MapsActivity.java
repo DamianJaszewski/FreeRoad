@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -55,6 +56,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
+    //Tablica z koordynatami lat i lng trasy
+    public ArrayList<LatLng> coordList  = new ArrayList<LatLng>();
+
 
     //Przekazanie danych z Jsona do stringa
     public class DownloadTask extends AsyncTask<String, Void, String>{
@@ -106,16 +110,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for(int i = 0; i < stepArray.length(); i++){
                 JSONObject stepsObject = stepArray.getJSONObject(i);
                 JSONObject startLocation = stepsObject.getJSONObject("start_location");
-                JSONObject endLocation = stepsObject.getJSONObject("end_location");
+                JSONObject endLocation= stepsObject.getJSONObject("end_location");
 
-                    Log.i("Punkt startowy - lat:",startLocation.getString("lat"));
-                    Log.i("Punkt startowy - lng:",startLocation.getString("lng"));
-                    Log.i("Punkt koncowy - lat:",endLocation.getString("lat"));
-                    Log.i("Punkt koncowy - lng:",endLocation.getString("lng"));
+                Double punktStartowyLat = startLocation.getDouble("lat");
+                Double punktStartowyLng = startLocation.getDouble("lng");
+                Double punktKoncowyLat = endLocation.getDouble("lat");
+                Double punktKoncowyLng = endLocation.getDouble("lng");
+
+                Log.i("punkt startowy lat: ",Double.toString(punktStartowyLat));
+                Log.i("punkt startowy lng: ",Double.toString(punktStartowyLng));
+                Log.i("punkt koncowy lat: ",Double.toString(punktKoncowyLat));
+                Log.i("punkt koncowy lng: ",Double.toString(punktKoncowyLng));
+
+                    for (int j = 0; j < stepArray.length(); j++) {
+                        coordList.add(new LatLng(punktStartowyLat,punktStartowyLng));
+                        coordList.add(new LatLng(punktKoncowyLat,punktKoncowyLng));
+                    }
                 }
-
-                //TextView pogodaTextVeiw = findViewById(R.id.pogodaTextView);
-                //pogodaTextVeiw.setText(weather.getString("description"));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -138,7 +149,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
 
         //Pobieranie danych o trasie z direction API
         DownloadTask task = new DownloadTask();
@@ -148,6 +158,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 "waypoints=Łężyce, 84-207&" +
                 "key=AIzaSyDAqU8VuZm3-D8hzdd9Uk_pXrvb9h0skI8");
 
+        setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -179,16 +190,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
                 );
 
-                //Metoda rysuje trasę(linie)
-                mMap.addPolyline(new PolylineOptions()
-                        .clickable(true)
-                        .add(
-                                new LatLng(54.5332, 18.4443),
-                                new LatLng(54.5279, 18.4288),
-                                new LatLng(54.5289, 18.4238),
-                                new LatLng(54.5316, 18.4280)));
+                //Metoda rysuje trasę na podstawie danych z Jsona
+                List<LatLng> points = coordList; // list of latlng
+                for (int i = 0; i < points.size() - 1; i++) {
+                    LatLng src = points.get(i);
+                    LatLng dest = points.get(i + 1);
 
+                    // mMap is the Map Object
+                    Polyline line = mMap.addPolyline(
+                            new PolylineOptions().add(
+                                    new LatLng(src.latitude, src.longitude),
+                                    new LatLng(dest.latitude,dest.longitude)
+                            ).width(4).color(Color.BLUE).geodesic(true)
+                    );
+                }
+                //Metoda rysuje trasę(linie)
+//                mMap.addPolyline(new PolylineOptions()
+//                        .clickable(true)
+//                        .add(
+//                                new LatLng(54.5413882, 18.4723871),
+//                                new LatLng(54.54018360000001, 18.4723871)
+//                                ));
                 //newLatLngZoom - create zoom in your map, 0 - 20
+                //Log.i("punkt startowy: ",Double.toString(punktStartowyLat));
+
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15));
             }
 
