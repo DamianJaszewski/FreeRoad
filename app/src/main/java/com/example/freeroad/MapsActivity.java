@@ -116,10 +116,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Double punktKoncowyLat = endLocation.getDouble("lat");
                 Double punktKoncowyLng = endLocation.getDouble("lng");
 
-                Log.i("punkt startowy lat: ",Double.toString(punktStartowyLat));
-                Log.i("punkt startowy lng: ",Double.toString(punktStartowyLng));
-                Log.i("punkt koncowy lat: ",Double.toString(punktKoncowyLat));
-                Log.i("punkt koncowy lng: ",Double.toString(punktKoncowyLng));
+                //Log.i("punkt startowy lat: ",Double.toString(punktStartowyLat));
+                //Log.i("punkt startowy lng: ",Double.toString(punktStartowyLng));
+                //Log.i("punkt koncowy lat: ",Double.toString(punktKoncowyLat));
+                //Log.i("punkt koncowy lng: ",Double.toString(punktKoncowyLng));
 
                     for (int j = 0; j < stepArray.length(); j++) {
                         coordList.add(new LatLng(punktStartowyLat,punktStartowyLng));
@@ -139,7 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
                     PackageManager.PERMISSION_GRANTED) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 20000, 0, locationListener);
             }
         }
     }
@@ -231,7 +231,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 20000, 0, locationListener);
         }
     }
 }
