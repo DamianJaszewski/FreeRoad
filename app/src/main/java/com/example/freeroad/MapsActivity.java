@@ -53,12 +53,11 @@ import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
     //Tablica z koordynatami lat i lng trasy
-    public ArrayList<LatLng> coordList  = new ArrayList<LatLng>();
-
+    ArrayList<LatLng> coordList  = new ArrayList<LatLng>();
 
     //Przekazanie danych z Jsona do stringa
     public class DownloadTask extends AsyncTask<String, Void, String>{
@@ -127,7 +126,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         coordList.add(new LatLng(punktKoncowyLat,punktKoncowyLng));
                     }
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -151,18 +149,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         //Pobieranie danych o trasie z direction API
-        DownloadTask task = new DownloadTask();
-        task.execute("https://maps.googleapis.com/maps/api/directions/json?" +
-                "origin=Chylonia, Gdynia&" +
-                "destination=Rezerwat przyrody Cisowa, Gdynia&" +
-                "waypoints=Łężyce, 84-207&" +
-                "key=AIzaSyDAqU8VuZm3-D8hzdd9Uk_pXrvb9h0skI8");
+        getRoute("Chylonia, Gdynia", "Rezerwat przyrody Cisowa, Gdynia");
 
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    public void getRoute(String startRoute, String endRoute){
+
+        //Pobieranie danych o trasie z direction API
+        DownloadTask task = new DownloadTask();
+        task.execute("https://maps.googleapis.com/maps/api/directions/json?" +
+                "origin=" + startRoute +
+                "&destination=" + endRoute +
+                //"&waypoints=Łężyce, 84-207" +
+                "&mode=bicycling" +
+                "&key=AIzaSyDAqU8VuZm3-D8hzdd9Uk_pXrvb9h0skI8");
     }
 
     @Override
@@ -208,11 +213,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                mMap.addPolyline(new PolylineOptions()
 //                        .clickable(true)
 //                        .add(
-//                                new LatLng(54.5413882, 18.4723871),
+//                                new LatLng(54.5413882, 18.4728713),
 //                                new LatLng(54.54018360000001, 18.4723871)
 //                                ));
-                //newLatLngZoom - create zoom in your map, 0 - 20
-                //Log.i("punkt startowy: ",Double.toString(punktStartowyLat));
+//                newLatLngZoom - create zoom in your map, 0 - 20
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15));
             }
