@@ -243,13 +243,13 @@ private void getWeatherForNewCity(String city)
             }
 ```
 ## Funkcjonalności
-1)Pogoda dla aktualnej lokalizacji uzytkowanika: 
+1) Pogoda dla aktualnej lokalizacji uzytkowanika: 
 * zmiana tła w zależności od pogody 
-* pobranie lokalizacji użytkownika do której  załadowana jest aktualna pogod
+* pobranie lokalizacji użytkownika do której załadowana jest aktualna pogoda
 2) Pogoda dla wprowadzonej lokalizacji przez użytkownika:
 * wprowadzenie nazwy miejscowosci przez uzytkownika
 * wyswietlenie pogody dla wprowadzonego miasta
-3)Mapa dla wprowadzonej trasy:
+3) Mapa dla wprowadzonej trasy:
 * wyświetlenie trasy rowerowej
 * pokazanie położenia użytkownika
 ## Status
