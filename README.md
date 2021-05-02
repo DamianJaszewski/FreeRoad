@@ -3,27 +3,24 @@
 > Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ## Spis treści
 * [Informacje ogólne](#Informacje-ogólne)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
+* [Dokumentacja](#dokumentacja)
+* [Technologia](#Technologie)
+* [Przykład kodu](#przykład-kodu)
+* [Funkcje](#Funkcje)
 * [Status](#status)
-* [Inspiration](#inspiration)
-* [Kontakt](#contact)
+* [Kontakt](#kontakt)
 ## Informacje ogólne
 Add more general information about project. What the purpose of the project is? Motivation?
-## Screenshots
+## Dokumentacja
 ![Example screenshot](./img/screenshot.png)
-## Technologies
+## Technologie
 * Tech 1 - version 1.0
 * Tech 2 - version 2.0
 * Tech 3 - version 3.0
-## Setup
-Describe how to install / setup your local environement / add link to demo version.
-## Code Examples
+## Przykład kodu
 Show examples of usage:
 `put-your-code-here`
-## Features
+## Funkcje
 List of features ready and TODOs for future development
 * Awesome feature 1
 * Awesome feature 2
@@ -33,7 +30,5 @@ To-do list:
 * Wow improvement to be done 2
 ## Status
 Project is: _in progress_, _finished_, _no longer continue_ and why?
-## Inspiration
-Add here credits. Project inspired by..., based on...
-## Contact
+## Kontakt
 Created by Natalia Gościnna & Damian Jaszewski - feel free to contact with us!
