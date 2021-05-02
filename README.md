@@ -9,10 +9,9 @@
 * [Status](#status)
 * [Kontakt](#kontakt)
 ## Informacje ogólne
-Add more general information about project. What the purpose of the project is? Motivation?
-Aplikacja ma na celu ułatwienie rowerzystom
-> Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
-> Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
+Aplikacja jest przeznaczona dla osób kochających jazdę na rowerze. Dzięki aplikacji dowiesz się jaka jest aktualnie pogoda, co umożliwi planowanie przejażdżki. Użytkownik może wybrać zaproponowaną przez nas trasę.
+Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
+Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ## Dokumentacja
 ![Logo aplikacji](./img/logo.png)
 ![Ekran z pogodą](./img/pogoda.png)
@@ -244,13 +243,15 @@ private void getWeatherForNewCity(String city)
             }
 ```
 ## Funkcjonalności
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+1)Pogoda dla aktualnej lokalizacji uzytkowanika: 
+* zmiana tła w zależności od pogody 
+* pobranie lokalizacji użytkownika do której  załadowana jest aktualna pogod
+2) Pogoda dla wprowadzonej lokalizacji przez użytkownika:
+* wprowadzenie nazwy miejscowosci przez uzytkownika
+* wyswietlenie pogody dla wprowadzonego miasta
+3)Mapa dla wprowadzonej trasy:
+* wyświetlenie trasy rowerowej
+* pokazanie położenia użytkownika
 ## Status
 Project is: _in progress_, _finished_, _no longer continue_ and why?
 ## Kontakt
