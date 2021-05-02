@@ -1,26 +1,30 @@
 # Let's go Ride
-> Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
-> Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
+> Aplikacja dla rowerzystów do sprawdzania pogody i wyznaczania tras.
 ## Spis treści
 * [Informacje ogólne](#Informacje-ogólne)
 * [Dokumentacja](#dokumentacja)
 * [Technologia](#Technologie)
 * [Przykład kodu](#przykład-kodu)
-* [Funkcje](#Funkcje)
+* [Funkcjonalności](#Funkcjonalności)
 * [Status](#status)
 * [Kontakt](#kontakt)
 ## Informacje ogólne
 Add more general information about project. What the purpose of the project is? Motivation?
+Aplikacja ma na celu ułatwienie rowerzystom
+> Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
+> Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ## Dokumentacja
 ![Example screenshot](./img/screenshot.png)
 ## Technologie
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Android Studio 4.1.1
+* Android SDK 10.0(Q) API Level 29
+* OpenWeatherMap API
+* Google maps API
+* Google directions API
 ## Przykład kodu
 Show examples of usage:
 `put-your-code-here`
-## Funkcje
+## Funkcjonalności
 List of features ready and TODOs for future development
 * Awesome feature 1
 * Awesome feature 2
