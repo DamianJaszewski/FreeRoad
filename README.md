@@ -26,7 +26,7 @@ Aplikacja ma na celu ułatwienie rowerzystom
 * Google directions API
 ## Przykład kodu
 Załadowanie pogody dla aktualnej lokalizacji:
-`private static String updateWeatherIcon(int condition)
+`
     {
         if(condition>=0 && condition<=300)
         {
