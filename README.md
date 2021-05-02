@@ -99,7 +99,7 @@ private static String updateWeatherIcon(int condition)
     }
 }
 ```
-Załadowanie pogody dla aktualnej lokalizacji:
+* Załadowanie pogody dla aktualnej lokalizacji:
 ```ruby
 private void getWeatherForCurrentLocation() {
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -147,14 +147,101 @@ private void getWeatherForCurrentLocation() {
         mLocationManager.requestLocationUpdates(Location_Provider, MIN_TIME, MIN_DISTANCE, mLocationLisner);
     }
 ```
-Pokazanie aktualnej lokalizacji:
+* Załadowanie pogody dla wprowadzonej lokalizacji:
 ```ruby
+private void getWeatherForNewCity(String city)
+    {
+        RequestParams params=new RequestParams();
+        params.put("q",city);
+        params.put("appid",APP_ID);
+        letsdoSomeNetworkig(params);
+    }
+    private void letsdoSomeNetworkig(RequestParams params)
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(WEATHER_UTL,params,new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
+                Toast.makeText(WeatherActivity.this,"Data Get Success",Toast.LENGTH_SHORT).show();
+
+                WeatherDataActivity weatherD= WeatherDataActivity.fromJson(response);
+                updateUI(weatherD);
+                //super.onSuccess(statusCode, headers, response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                //super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+    }
 ```
-Zmiana tła w zależności od aktualnej pogody:
-`put-your-code-here`
-Zmiana tła w zależności od aktualnej pogody:
-`put-your-code-here`
+* Załadowanie się wprowadzonej trasy rowerowej:
+```ruby
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Pobieranie danych o trasie z direction API
+        getRoute("Chylonia, Gdynia", "Rezerwat przyrody Cisowa, Gdynia");
+
+        setContentView(R.layout.activity_maps);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    public void getRoute(String startRoute, String endRoute){
+
+        //Pobieranie danych o trasie z direction API
+        DownloadTask task = new DownloadTask();
+        task.execute("https://maps.googleapis.com/maps/api/directions/json?" +
+                "origin=" + startRoute +
+                "&destination=" + endRoute +
+                //"&waypoints=Łężyce, 84-207" +
+                "&mode=bicycling" +
+                "&key=AIzaSyDAqU8VuZm3-D8hzdd9Uk_pXrvb9h0skI8");
+    }
+```
+* Pokazanie aktualnej lokalizacji:
+```ruby
+@Override
+            public void onLocationChanged(@NonNull Location location) {
+                // Toast.makeText(MapsActivity.this, location.toString(), Toast.LENGTH_LONG).show();
+                // Add a marker in myLocation and move the camera
+                //mMap.clear();
+
+                //Metoda ustawia marker na naszej lokalizacji
+                LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.addMarker(
+                        new MarkerOptions()
+                                .position(myLocation)
+                                .title("Tutaj jestem")
+                                //Change colour of marker
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+                );
+
+                //Metoda rysuje trasę na podstawie danych z Jsona
+                List<LatLng> points = coordList; // list of latlng
+                for (int i = 0; i < points.size() - 1; i++) {
+                    LatLng src = points.get(i);
+                    LatLng dest = points.get(i + 1);
+
+                    // mMap is the Map Object
+                    Polyline line = mMap.addPolyline(
+                            new PolylineOptions().add(
+                                    new LatLng(src.latitude, src.longitude),
+                                    new LatLng(dest.latitude,dest.longitude)
+                            ).width(4).color(Color.BLUE).geodesic(true)
+                    );
+                }
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15));
+            }
+```
 ## Funkcjonalności
 List of features ready and TODOs for future development
 * Awesome feature 1
