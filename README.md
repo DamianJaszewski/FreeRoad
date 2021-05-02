@@ -1,14 +1,15 @@
 # Let's go Ride
-> Applikacja pozwala na dodawanie i wyznaczanie tras. Korzysta z google directions api i google maps api!
-## Table of contents
-* [General info](#general-info)
+> Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
+> Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
+## Spis treści
+* [Informacje ogólne](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
-* [Contact](#contact)
+* [Kontakt](#contact)
 ## General info
 Add more general information about project. What the purpose of the project is? Motivation?
 ## Screenshots
