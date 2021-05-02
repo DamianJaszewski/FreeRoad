@@ -2,7 +2,7 @@
 > Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
 > Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ## Spis treści
-* [Informacje ogólne](#general-info)
+* [Informacje ogólne](#informcje-ogólne)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -10,7 +10,7 @@
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Kontakt](#contact)
-## General info
+## Informacje ogólne
 Add more general information about project. What the purpose of the project is? Motivation?
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
