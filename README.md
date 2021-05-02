@@ -25,7 +25,7 @@ Aplikacja ma na celu ułatwienie rowerzystom
 * Google maps API
 * Google directions API
 ## Przykład kodu
-* Załadowanie pogody dla aktualnej lokalizacji:
+* Zmiana tła w zależności od aktualnej pogody:
 ```ruby
 private static String updateWeatherIcon(int condition)
     {
@@ -99,10 +99,58 @@ private static String updateWeatherIcon(int condition)
     }
 }
 ```
-Załadowanie pogody dla wprowadzonej lokalizacji:
-`put-your-code-here`
+Załadowanie pogody dla aktualnej lokalizacji:
+```ruby
+private void getWeatherForCurrentLocation() {
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationLisner = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                String Latitude = String.valueOf(location.getLatitude());
+                String Longitude = String.valueOf(location.getLongitude());
+                RequestParams params =new RequestParams();
+                params.put("lat",Latitude);
+                params.put("lon",Longitude);
+                params.put("appid",APP_ID);
+                letsdoSomeNetworkig(params);
+
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                //nie mozna uzyskac lokalizacji
+            }
+        };
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
+            return;
+        }
+        mLocationManager.requestLocationUpdates(Location_Provider, MIN_TIME, MIN_DISTANCE, mLocationLisner);
+    }
+```
 Pokazanie aktualnej lokalizacji:
-`put-your-code-here`
+```ruby
+
+```
 Zmiana tła w zależności od aktualnej pogody:
 `put-your-code-here`
 Zmiana tła w zależności od aktualnej pogody:
