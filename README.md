@@ -2,7 +2,7 @@
 > Applikacja umożliwia pokazanie aktualnej pogody w Twojej lokalizacji oraz wybranie innej lokalizacji i pokazanie pogody. 
 > Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ## Spis treści
-* [Informacje ogólne](#informcje-ogólne)
+* [Informacje ogólne](#Informacje-ogólne)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
