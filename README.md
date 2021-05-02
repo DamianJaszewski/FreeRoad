@@ -17,6 +17,7 @@ Aplikacja umożliwia pokazanie trasy rowerowej i naszej obecnej lokalizacji.
 ![Ekran z pogodą](./img/pogoda.png)
 ![Zmiana miasta dla pogody](./img/wpisz-miasto.png)
 ![Mapa](./img/mapa.png)
+![Ładowanie](./img/ladowanie.png)
 ![Ikony](./img/ikony-pogody.jpg)
 ## Technologie
 * Android Studio 4.1.1
@@ -252,7 +253,6 @@ private void getWeatherForNewCity(String city)
 3) Mapa dla wprowadzonej trasy:
 * wyświetlenie trasy rowerowej
 * pokazanie położenia użytkownika
-## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
 ## Kontakt
-Created by Natalia Gościnna & Damian Jaszewski - feel free to contact with us!
+Aplikację stwworzyli:
+Natalia Gościnna & Damian Jaszewski
