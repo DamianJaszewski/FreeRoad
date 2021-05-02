@@ -18,6 +18,7 @@ Aplikacja ma na celu ułatwienie rowerzystom
 ![Ekran z pogodą](./img/pogoda.png)
 ![Zmiana miasta dla pogody](./img/wpisz-miasto.png)
 ![Mapa](./img/mapa.png)
+![Ikony](./img/ikony-pogody.jpg)
 ## Technologie
 * Android Studio 4.1.1
 * Android SDK 10.0(Q) API Level 29
