@@ -254,5 +254,5 @@ private void getWeatherForNewCity(String city)
 * wyświetlenie trasy rowerowej
 * pokazanie położenia użytkownika
 ## Kontakt
-Aplikację stwworzyli:
+Aplikację stworzyli:
 Natalia Gościnna & Damian Jaszewski
