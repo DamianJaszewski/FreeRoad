@@ -97,7 +97,8 @@ private static String updateWeatherIcon(int condition)
     public String getmWeatherType() {
         return mWeatherType;
     }
-}'''
+}
+```
 Załadowanie pogody dla wprowadzonej lokalizacji:
 `put-your-code-here`
 Pokazanie aktualnej lokalizacji:
