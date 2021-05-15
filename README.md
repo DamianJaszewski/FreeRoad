@@ -2,7 +2,7 @@
 > Aplikacja dla rowerzystów do sprawdzania pogody i wyznaczania tras.
 ## Spis treści
 * [Informacje ogólne](#Informacje-ogólne)
-* [Dokumentacja](#dokumentacja)
+* [Dokumentacja](#)
 * [Technologia](#Technologie)
 * [Przykład kodu](#przykład-kodu)
 * [Funkcjonalności](#Funkcjonalności)
